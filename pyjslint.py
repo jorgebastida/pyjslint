@@ -21,7 +21,7 @@ predef: ['document', 'window']
 """
 node_script = r"""
 var JSLINT = require("%s").JSLINT,
-    print = require("sys").print,
+    print = require("util").print,
     readFileSync = require("fs").readFileSync,
     error = null, i = 0, j = 0, src = null;
 
@@ -96,7 +96,7 @@ def process(jsfile, options):
     output, valid = execute_command(command)
     jsfile.close()
     lint.close()
-    return [line for line in output.split("\n") if line], valid == 0
+    return [line for line in output.split("\n") if line], valid
 
 
 # Hooks entry point
